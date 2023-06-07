@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Body, Request, Response, HTTPException, status
 from fastapi.encoders import jsonable_encoder
 from typing import List
-
+from fastapi import UploadFile, File
 from models import Task, TaskUpdate
 
 router = APIRouter()
@@ -65,3 +65,14 @@ def delete_task(id: str, request: Request, response: Response):
 
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                         detail=f"Task with ID {id} not found")
+
+
+
+@router.post("/getVideo", response_description="Create a new task", status_code=status.HTTP_201_CREATED, response_model=None)
+def send_video(request: Request, video_file: UploadFile = File(...)):
+   
+    print("Video details:")
+    print("Title:", video_file.filename)
+    print("Description:", Task.get("description"))
+    # Print any other details you want from the video object
+    return {} #return none

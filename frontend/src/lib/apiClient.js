@@ -29,3 +29,13 @@ export const deleteTask = (taskId) => {
     method: "DELETE",
   });
 };
+
+export const sendVideo = (video) => {
+  return fetch(`${SERVER_URL}/api/v1/videos/getVideo`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(video),
+  }).then((res) => res.json());
+};
