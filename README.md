@@ -17,6 +17,7 @@ cd ../frontend
 npm install
 ```
 
+היי בנות!!!!
 ### Edit `.env` file with Database connection details:
 
 ```
