@@ -1,94 +1,55 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { DataContext } from "../App";
-import { createTask, updateTask } from "../lib/apiClient";
+import * as React from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
-function TaskForm() {
-  let { id } = useParams();
-  const [formValues, setFormValues] = React.useState({});
-  const { tasks } = React.useContext(DataContext);
-  const isEdit = !!id;
 
-  useEffect(() => {
-    if (!!id) {
-      console.log("Edit task", id);
-      const task = tasks.find((task) => task._id === id);
-      if (task) {
-        setFormValues(task);
-      }
-    }
-  }, [id, tasks]);
 
-  const handleCreateTask = () => {
-    console.log("Create task", formValues);
-    createTask(formValues)
-      .then((task) => {
-        console.log(task);
-      })
-      .then(() => {
-        document.location.href = "/";
-      });
-  };
-
-  const handleEditTask = () => {
-    console.log("Update task", formValues);
-    updateTask(formValues)
-      .then((task) => {
-        console.log(task);
-      })
-      .then(() => {
-        document.location.href = "/";
-      });
-  };
-
-  return (
-    <div>
-      <div className="d-flex justify-content-start mt-5 ms-5">
-        <h1>{isEdit ? "Edit Task" : "Create Task"}</h1>
-      </div>
-      <div className="p-5 ">
-        <div className="my-3 row">
-          <label className="col-1" htmlFor="title">
-            Title
-          </label>
-          <input
-            className="col-4"
-            type="text"
-            id="title"
-            name="title"
-            value={formValues?.title || ""}
-            onChange={(e) =>
-              setFormValues({ ...formValues, title: e.target.value })
-            }
-          />
-        </div>
-        <div className="my-3 row">
-          <label className="col-1" htmlFor="description">
-            Description
-          </label>
-          <input
-            className="col-4"
-            type="text"
-            id="description"
-            name="description"
-            value={formValues?.description || ""}
-            onChange={(e) =>
-              setFormValues({ ...formValues, description: e.target.value })
-            }
-          />
-        </div>
-        <div className="col-4 d-flex justify-content-center">
-          <button
-            className=""
-            disabled={!formValues?.title || !formValues?.description}
-            onClick={isEdit ? handleEditTask : handleCreateTask}
-          >
-            {isEdit ? "Update Task" : "Create Task"}
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+function createData(
+  name,
+  color
+) {
+  return { name, color };
 }
 
-export default TaskForm;
+const rows = [
+  createData('gfdfgh', 159),
+  createData('Ice cream sandwich', 237),
+  createData('Eclair', 262),
+  createData('Cupcake', 305),
+  createData('Gingerbread', 356),
+];
+
+export default function BasicTable({arr}) {
+  return (
+    <>  
+    <TableContainer component={Paper} sx={{width:'80vw',margin:"10vw"}}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead sx={{backgroundColor:"lightgreen"}}>
+          <TableRow >
+            <TableCell >ID</TableCell>
+            <TableCell >Color</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {arr.map((row,index) => (
+            <TableRow
+              key={index}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {row.id}
+              </TableCell>
+              <TableCell >{row.color}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+    </>
+  );
+}

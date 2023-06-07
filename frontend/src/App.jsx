@@ -17,23 +17,16 @@ function App() {
       setTasks(tasksFromServer);
     });
   }, []);
+  
+  let students = [{id:5635127,color:"jhdjs"},{id:345678,color:"sdfghjk"}]
 
   return (
-    <DataContext.Provider
-      value={{
-        tasks: tasks,
-      }}
-    >
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<TasksView />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/tasks" element={<TasksView />} />
-          <Route path="/task-form/:id?" element={<TaskForm />} />
-        </Routes>
-      </BrowserRouter>
-    </DataContext.Provider>
+  <TaskForm arr={students}/>
   );
-}
+};
+
+//export default StudentTable;
+
+
 
 export default App;
