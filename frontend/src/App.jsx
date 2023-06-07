@@ -18,6 +18,8 @@ function App() {
       setTasks(tasksFromServer);
     });
   }, []);
+  
+  let students = [{id:5635127,color:"jhdjs"},{id:345678,color:"sdfghjk"}]
 
   const handleVideoUpload = (event) => {
     const file = event.target.files[0];
@@ -27,6 +29,7 @@ function App() {
   };
 
   return (
+    <>
     <DataContext.Provider
       value={{
         tasks: tasks,
@@ -57,7 +60,13 @@ function App() {
         </div>
       </BrowserRouter>
     </DataContext.Provider>
+  <TaskForm arr={students}/>
+  </>
   );
-}
+};
+
+//export default StudentTable;
+
+
 
 export default App;
