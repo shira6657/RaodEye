@@ -8,16 +8,8 @@ import BasicTable from "./screens/BasicTable";
 export const DataContext = React.createContext({});
 
 function App() {
-  const [tasks, setTasks] = useState([]);
 
-  useEffect(() => {
-    getTasks().then((tasksFromServer) => {
-      console.log(tasksFromServer);
-      setTasks(tasksFromServer);
-    });
-  }, []);
   
-  let students = [{id:5635127,color:"jhdjs"},{id:345678,color:"sdfghjk"}]
 
   return (
     <>

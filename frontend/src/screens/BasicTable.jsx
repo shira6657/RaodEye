@@ -24,7 +24,6 @@ export default function BasicTable() {
 
   const arr =  params.state.arr;
   return (
-<<<<<<< HEAD:frontend/src/screens/TaskForm.jsx
     <>
       <TableContainer component={Paper} sx={{ width: '80vw', margin: "10vw" }}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -32,30 +31,7 @@ export default function BasicTable() {
             <TableRow>
             <TableCell align="center" style={{fontWeight: 'bold'}}>צבע רכב</TableCell> {/* Align content in the middle */}
             <TableCell align="center" style={{fontWeight: 'bold'}}>מספר רישוי</TableCell>
-=======
-    <>  
-    <button onClick={()=>{
-      navigate('/');
-    }}>back</button>
-    <TableContainer component={Paper} sx={{width:'80vw',margin:"10vw"}}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead sx={{backgroundColor:"lightgreen"}}>
-          <TableRow >
-            <TableCell >ID</TableCell>
-            <TableCell >Color</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {arr.map((row,index) => (
-            <TableRow
-              key={index}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.id}
-              </TableCell>
-              <TableCell >{row.color}</TableCell>
->>>>>>> 2046e992ba8e6c5788780241adf370af9352af3e:frontend/src/screens/BasicTable.jsx
+
             </TableRow>
           </TableHead>
           <TableBody>
@@ -65,7 +41,6 @@ export default function BasicTable() {
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                 <TableCell component="th" scope="row" align="center" >{row.color}</TableCell> 
                 <TableCell component="th" scope="row" align="center">{row.id}</TableCell>
-             
               </TableRow>
             ))}
           </TableBody>
