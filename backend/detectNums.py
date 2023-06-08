@@ -22,5 +22,4 @@ def detect_Num(img):
             'plate': result['plate']
         }
         cars.append(car)
-    print(cars)
     return cars

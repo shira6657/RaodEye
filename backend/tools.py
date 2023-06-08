@@ -5,14 +5,14 @@ import json
 def Imut(listOfCars):
     newListOfCars = []
     for car in listOfCars:
-        carColor = send_number_to_server(car["ID"])
-        if carColor == None:
-            newListOfCars.append({"ID": car["ID"], "COLOR": car["COLOR"], "notes": "not found"})
+        carColor = send_number_to_server(car["plate"])
+        if carColor == "not found":
+            newListOfCars.append({"plate": car["plate"], "color": car["color"], "notes": "not found"})
         else:
-            if not carColor == 0 or isEqual(car["COLOR"], carColor):
-                newListOfCars.append({"ID": car["ID"], "COLOR": car["COLOR"], "notes": ""})
+            if not carColor == 0 or isEqual(car["color"], carColor):
+                newListOfCars.append({"plate": car["plate"], "color": car["color"], "notes": ""})
             else:
-                newListOfCars.append({"ID": car["ID"], "COLOR": car["COLOR"], "notes": "not similar"})
+                newListOfCars.append({"plate": car["plate"], "color": car["color"], "notes": "not similar"})
     return newListOfCars
 
 
@@ -44,7 +44,7 @@ def send_number_to_server(number):
                 print('No records found.')
 
     except urllib.error.URLError as e:
-        return None
+        return "not found"
 
 
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { sendVideo } from "../lib/apiClient";
 import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
@@ -9,25 +9,34 @@ import Paper from '@mui/material/Paper';
 import open from "C:/Users/97258/Desktop/לימודים/hackaton/frontend/src/assets/open.png";
 import text from "C:/Users/97258/Desktop/לימודים/hackaton/frontend/src/assets/text.png";
 
+import CircularProgress from '@mui/material/CircularProgress';
 
 //import VideoUploader from "./components/VideoUploader";
 
 export const DataContext = React.createContext({});
 
 function UploadVideo() {
-
+  let [loading, setLoading] = useState(false)
   let navigate = useNavigate();
 
-  const handleVideoUpload = (event) => {
-    const file = event.target.files[0];
-    console.log('file: ', file);
-    sendVideo(file);
-    let students = [{ id: 5635127, color: "jhdjs" }, { id: 345678, color: "sdfghjk" }]
 
-    navigate('table', { state: { arr: students } });
-    // Do something with the video file
-    console.log("Uploaded video:", file);
-  };
+  const submit = async () => {
+    setLoading(true)
+    var file = document.getElementById("video-upload-input").files[0];
+    console.log('file: ', file);
+    if (file) {
+      var filereader = new FileReader();
+      filereader.readAsDataURL(file);
+      filereader.onload = async function (evt) {
+        let base64 = evt.target.result;
+        let video_data = await sendVideo(base64);
+        setLoading(false)
+        navigate('table', { state: { arr: video_data,path:file.name } });
+      }
+
+      // Do something with the video file
+    };
+  }
 
   return (
     <>
@@ -37,7 +46,11 @@ function UploadVideo() {
         }}
       >
 
-
+{loading ?
+  <div style={{display:"flex",justifyContent:"center",width:"100vw",height:"100vh",marginTop:"45vh"}}>
+    <CircularProgress />
+    </div> :
+    <>
 
         <div style={{ background: "#DEEEF6", padding: "20px", position: "relative", height: "650px", display: "flex", justifyContent: "center" }} sx={{ width: '80vw', margin: "10vw", height: "50px" }}>
 
@@ -53,7 +66,7 @@ function UploadVideo() {
             id="video-upload-input"
             accept="video/*"
             style={{ display: "none" }}
-            onChange={handleVideoUpload}
+            onChange={submit}
           />
 
         <div style={{display:"flex",flexDirection:"column",height:"400px",width:"900px"}}>
@@ -140,6 +153,7 @@ function UploadVideo() {
 
 
         </div>
+        </>}
 
       </DataContext.Provider>
 
