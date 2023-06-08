@@ -6,7 +6,7 @@ def Imut(listOfCars):
     newListOfCars = []
     for car in listOfCars:
         carColor = send_number_to_server(car["plate"])
-        if carColor == None:
+        if carColor == "not found":
             newListOfCars.append({"plate": car["plate"], "color": car["color"], "notes": "not found"})
         else:
             if not carColor == 0 or isEqual(car["color"], carColor):
@@ -44,7 +44,7 @@ def send_number_to_server(number):
                 print('No records found.')
 
     except urllib.error.URLError as e:
-        return None
+        return "not found"
 
 
 

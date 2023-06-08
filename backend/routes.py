@@ -6,20 +6,26 @@ from models import Task, TaskUpdate
 import base64
 from collectInfoCars import start
 from tools import Imut
+import json
 router = APIRouter()
 
 
 @router.post("/getVideo")
 async def send_video(request:Request):
-    data = await request.json()
-    video_data = base64.b64decode(data['value'].split(",")[1])
+     data = await request.json()
+     video_data =  base64.b64decode(data['value'].split(",")[1])
     
-    with open("video_car.mp4", "wb") as video_file:
-        video_file.write(video_data)
-    a = start("video_car.mp4")
-    return Imut(a)
-    print(a)
-    return a 
+     with open("video_car.mp4", "wb") as video_file:
+          video_file.write(video_data)
+     a = await start("video_car.mp4")
+#     response_body = json.dumps(a)
+#     print("BLALALAL",response_body)
+#     return response_body
+     # print(a)
+     # return a
+     return Imut(a)
+    # print(a)
+    # return a 
     # return {} #return none
 
 

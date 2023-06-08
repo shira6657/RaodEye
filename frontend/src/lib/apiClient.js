@@ -9,5 +9,6 @@ export const sendVideo = async(base64) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({"value":base64}),
-  }).then((res) =>  res.json());
+  }).then((res) =>  
+  res.json());
 };
