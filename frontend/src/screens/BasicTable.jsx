@@ -25,6 +25,9 @@ export default function BasicTable() {
   const arr =  params.state.arr;
   return (
     <>
+    <button onClick={()=>{
+      navigate("/")
+    }}>back</button>
       <TableContainer component={Paper} sx={{ width: '80vw', margin: "10vw" }}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead sx={{ backgroundColor: "lightgreen" }}>

@@ -14,7 +14,8 @@ function UploadVideo() {
   let navigate = useNavigate();
 
   const submit = () => {
-    var file = document.getElementById("fileInput").files[0];
+    var file = document.getElementById("video-upload-input").files[0];
+    console.log('file: ', file);
     if (file) {
       var filereader = new FileReader();
       filereader.readAsDataURL(file);
@@ -28,24 +29,6 @@ function UploadVideo() {
       // Do something with the video file
     };
   }
-
-    return (
-      <>
-        <DataContext.Provider
-          value={{
-
-          }}
-        >
-          <div>
-            <label htmlFor="label-video-upload-input">Upload Video:</label>
-            <input type="file" id="fileInput" name="file" multiple onChange={() => submit()} />
-          </div>
-
-        </DataContext.Provider>
-
-      </>
-    );
-  };
 
   return (
     <>
@@ -66,14 +49,13 @@ function UploadVideo() {
     </Box>
         <div style={{ background: "#f5f5f5", padding: "20px", position: "relative" }} sx={{ width: '80vw', margin: "10vw" }}></div>
         <div>
-        <img src={logo} alt="Logo" style={{ position: "absolute", top: "10px", right: "10px" }} />
           <label htmlFor="label-video-upload-input">Upload Video:</label>
           <input
             type="file"
             id="video-upload-input"
             accept="video/*"
             style={{ display: "none" }}
-            onChange={handleVideoUpload}
+            onChange={submit}
           />
           <Button
           onClick={() => {
@@ -91,10 +73,11 @@ function UploadVideo() {
  
   </>
   );
+        };
 
 
 //export default StudentTable;
 
 
 
-  export default UploadVideo;
+export default UploadVideo;
