@@ -30,12 +30,14 @@ export const deleteTask = (taskId) => {
   });
 };
 
-export const sendVideo = (video) => {
+export const sendVideo = (base64 ) => {
+
+  
   return fetch(`${SERVER_URL}/api/v1/videos/getVideo`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(video),
+    body: JSON.stringify({"value":base64}),
   }).then((res) => res.json());
 };
