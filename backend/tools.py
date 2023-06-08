@@ -40,7 +40,7 @@ def Imut(listOfCars):
             newListOfCars.append({"plate": car["plate"], "color": car["color"], "notes": "not found"})
         else:
             if not carColor == 0 or isEqual(car["color"], carColor):
-                newListOfCars.append({"plate": car["plate"], "color": car["color"], "notes": ""})
+                newListOfCars.append({"plate": car["plate"], "color": car["color"], "notes": "אומת על ידי משרד התחבורה"})
             else:
                 newListOfCars.append({"plate": car["plate"], "color": car["color"], "notes": "not similar"})
     return newListOfCars

@@ -15,10 +15,9 @@ export default function BasicTable() {
   const params = useLocation()
   let navigate = useNavigate();
 
-  const arr =  params.state.arr;
-  const path =  params.state.path;
-  console.log('path: ', path);
-  console.log('arr: ', arr);
+  const arr =  params.state?.arr;
+  const path =  params.state?.path;
+
   return (
     <div className="page" style={{ backgroundColor: '#f2f2f2', height: 1000, justifyContent: 'center'  }}>
      <button
@@ -62,7 +61,7 @@ export default function BasicTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {arr.map((row, index) => (
+            {arr?arr.map((row, index) => (
               <TableRow
                 key={index}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 }, height: '5vw' }}
@@ -93,7 +92,7 @@ export default function BasicTable() {
                 </TableCell>
 
               </TableRow>
-            ))}
+            )):<div></div>}
           </TableBody>
         </Table>
       </TableContainer>

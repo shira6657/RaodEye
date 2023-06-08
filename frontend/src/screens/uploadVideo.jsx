@@ -25,7 +25,7 @@ function UploadVideo() {
         let base64 = evt.target.result;
         let video_data = await sendVideo(base64);
         setLoading(false)
-        navigate('table', { state: { arr: video_data,path:file.name } });
+        if (video_data!="err")navigate('table', { state: { arr: video_data, } });
       }
 
       // Do something with the video file
