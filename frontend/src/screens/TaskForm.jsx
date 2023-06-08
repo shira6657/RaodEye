@@ -16,40 +16,32 @@ function createData(
   return { name, color };
 }
 
-const rows = [
-  createData('gfdfgh', 159),
-  createData('Ice cream sandwich', 237),
-  createData('Eclair', 262),
-  createData('Cupcake', 305),
-  createData('Gingerbread', 356),
-];
 
 export default function BasicTable({arr}) {
   return (
-    <>  
-    <TableContainer component={Paper} sx={{width:'80vw',margin:"10vw"}}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead sx={{backgroundColor:"lightgreen"}}>
-          <TableRow >
-            <TableCell >ID</TableCell>
-            <TableCell >Color</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {arr.map((row,index) => (
-            <TableRow
-              key={index}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.id}
-              </TableCell>
-              <TableCell >{row.color}</TableCell>
+    <>
+      <TableContainer component={Paper} sx={{ width: '80vw', margin: "10vw" }}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead sx={{ backgroundColor: "lightgreen" }}>
+            <TableRow>
+            <TableCell align="center" style={{fontWeight: 'bold'}}>צבע רכב</TableCell> {/* Align content in the middle */}
+            <TableCell align="center" style={{fontWeight: 'bold'}}>מספר רישוי</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {arr.map((row, index) => (
+              <TableRow
+                key={index}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <TableCell component="th" scope="row" align="center" >{row.color}</TableCell> 
+                <TableCell component="th" scope="row" align="center">{row.id}</TableCell>
+             
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </>
   );
+  
 }

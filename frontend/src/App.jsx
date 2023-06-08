@@ -15,11 +15,12 @@ function App() {
     getTasks().then((tasksFromServer) => {
       console.log(tasksFromServer);
       setTasks(tasksFromServer);
+      
     });
   }, []);
   
   let students = [{id:5635127,color:"jhdjs"},{id:345678,color:"sdfghjk"}]
-
+  
   return (
   <TaskForm arr={students}/>
   );
