@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pymongo import MongoClient
 from dotenv import dotenv_values
-from routes import router as task_router
+from routes import router as video_router
 
 dotenv_values(".env")
 
@@ -33,4 +33,4 @@ def shutdown_db_client():
     app.mongodb_client.close()
 
 
-app.include_router(task_router, tags=["tasks"], prefix="/api/v1/tasks")
+app.include_router(video_router, tags=["videos"], prefix="/api/v1/videos")
