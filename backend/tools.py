@@ -37,12 +37,12 @@ def Imut(listOfCars):
     for car in listOfCars:
         carColor = send_number_to_server(car["plate"])
         if carColor == []:
-            newListOfCars.append({"plate": car["plate"], "color": carColor, "notes": "not found"})
+            newListOfCars.append({"plate": car["plate"], "color": car["color"], "notes": "not found"})
         else:
             if not carColor == 0 and isEqual(car["color"], carColor):
                 newListOfCars.append({"plate": car["plate"], "color": car["color"], "notes": "אומת על ידי משרד התחבורה"})
             else:
-                newListOfCars.append({"plate": car["plate"], "color": carColor, "notes": "not similar"})
+                newListOfCars.append({"plate": car["plate"], "color": car["color"], "notes": "not similar"})
     return newListOfCars
 
 
