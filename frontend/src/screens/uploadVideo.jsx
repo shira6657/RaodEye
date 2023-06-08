@@ -13,40 +13,41 @@ function UploadVideo() {
 
   let navigate = useNavigate();
 
-  const submit = () => {
+  
+  const submit = async () => {
     var file = document.getElementById("video-upload-input").files[0];
     console.log('file: ', file);
     if (file) {
       var filereader = new FileReader();
       filereader.readAsDataURL(file);
-      filereader.onload = function (evt) {
-        var base64 = evt.target.result;
-        sendVideo(base64);
+      filereader.onload =  async function (evt) {
+        let base64 = evt.target.result;
+        let video_data = await sendVideo(base64);
+  
+        navigate('table', { state: { arr: video_data } });
       }
-      let students = [{ id: 5635127, color: "jhdjs" }, { id: 345678, color: "sdfghjk" }]
-
-      navigate('table', { state: { arr: students } });
+      
       // Do something with the video file
     };
   }
 
   return (
     <>
-    <DataContext.Provider
-      value={{
-       
-      }}
-    >
+      <DataContext.Provider
+        value={{
+
+        }}
+      >
 
 
-<Box component="span" sx={{ width: '80vw', margin: "10vw" ,p: 6, border: '1px dashed grey' }}>
-      <Button>
-        
-        
-        Save
-        
-        </Button>
-    </Box>
+        <Box component="span" sx={{ width: '80vw', margin: "10vw", p: 6, border: '1px dashed grey' }}>
+          <Button>
+
+
+            Save
+
+          </Button>
+        </Box>
         <div style={{ background: "#f5f5f5", padding: "20px", position: "relative" }} sx={{ width: '80vw', margin: "10vw" }}></div>
         <div>
           <label htmlFor="label-video-upload-input">Upload Video:</label>
@@ -58,22 +59,22 @@ function UploadVideo() {
             onChange={submit}
           />
           <Button
-          onClick={() => {
-            document.getElementById("video-upload-input").click();
-          }}
-          
-        >
-        Select Video
+            onClick={() => {
+              document.getElementById("video-upload-input").click();
+            }}
 
-           </Button>
-          
+          >
+            Select Video
+
+          </Button>
+
         </div>
- 
-    </DataContext.Provider>
- 
-  </>
+
+      </DataContext.Provider>
+
+    </>
   );
-        };
+};
 
 
 //export default StudentTable;

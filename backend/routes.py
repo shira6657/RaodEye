@@ -5,6 +5,7 @@ from fastapi import UploadFile, File
 from models import Task, TaskUpdate
 import base64
 from collectInfoCars import start
+from tools import Imut
 router = APIRouter()
 
 
@@ -15,8 +16,11 @@ async def send_video(request:Request):
     
     with open("video_car.mp4", "wb") as video_file:
         video_file.write(video_data)
-    start("video_car.mp4")
-    return {} #return none
+    a = start("video_car.mp4")
+    return Imut(a)
+    print(a)
+    return a 
+    # return {} #return none
 
 
 

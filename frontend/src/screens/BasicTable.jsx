@@ -23,6 +23,7 @@ export default function BasicTable() {
   let navigate = useNavigate();
 
   const arr =  params.state.arr;
+  console.log('arr: ', arr);
   return (
     <>
     <button onClick={()=>{
@@ -32,6 +33,7 @@ export default function BasicTable() {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead sx={{ backgroundColor: "lightgreen" }}>
             <TableRow>
+            <TableCell align="center" style={{fontWeight: 'bold'}}>הערות</TableCell>
             <TableCell align="center" style={{fontWeight: 'bold'}}>צבע רכב</TableCell> {/* Align content in the middle */}
             <TableCell align="center" style={{fontWeight: 'bold'}}>מספר רישוי</TableCell>
 
@@ -42,8 +44,10 @@ export default function BasicTable() {
               <TableRow
                 key={index}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell component="th" scope="row" align="center" >{row.color}</TableCell> 
-                <TableCell component="th" scope="row" align="center">{row.id}</TableCell>
+                <TableCell component="th" scope="row" align="center">{row.notes }</TableCell>
+                <TableCell component="th" scope="row" align="center" >{row.color||"לא נמצא צבע הרכב"}</TableCell> 
+                <TableCell component="th" scope="row" align="center">{row.plate }</TableCell>
+
               </TableRow>
             ))}
           </TableBody>

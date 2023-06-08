@@ -47,7 +47,8 @@ def start(video):
             result.append(result_dict)  # add the dictionary to the result array
 
     print(result)
+    return result
 
 # coro = start('ss.mp4')
 # asyncio.run(coro)
-start('ss.mp4')
+# start('ss.mp4')
