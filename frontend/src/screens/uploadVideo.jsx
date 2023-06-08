@@ -3,11 +3,11 @@ import { sendVideo } from "../lib/apiClient";
 import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import roadEyeLogo from "C:/Users/97258/Desktop/לימודים/hackaton/frontend/src/assets/RoadEye.png";
+import roadEyeLogo from "../assets/RoadEye.png";
 import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
-import open from "C:/Users/97258/Desktop/לימודים/hackaton/frontend/src/assets/open.png";
-import text from "C:/Users/97258/Desktop/לימודים/hackaton/frontend/src/assets/text.png";
+import open from "../assets/open.png";
+import text from "../assets/text.png";
 
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -115,10 +115,12 @@ function UploadVideo() {
                 htmlFor="label-video-upload-input"
                 style={{
                   fontFamily: 'Geologica, Bold',
-                  fontSize: '18px',
+                  fontSize: '25px',
                   color: '#DEEEF6',
                   marginTop: '100px',
                   marginLeft: '100px',
+                  fontFamily:"sans-serif/bold",
+                  fontWeight:"bolder"
                 }}
               >
                 Here you can<br /> upload a video:
