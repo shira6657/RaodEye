@@ -25,7 +25,7 @@ def send_number_to_server(number):
         number)
     try:
         with urllib.request.urlopen(url) as response:
-            data = response.read().decode('utf-8')
+            data= response.read().decode('utf-8')
 
             # Parse the JSON string
             parsed_data = json.loads(data)

@@ -1,6 +1,9 @@
 import React from "react";
 import {  sendVideo } from "../lib/apiClient";
 import { useNavigate } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+
 
 //import VideoUploader from "./components/VideoUploader";
 
@@ -28,7 +31,19 @@ function UploadVideo() {
        
       }}
     >
+
+
+<Box component="span" sx={{ width: '80vw', margin: "10vw" ,p: 6, border: '1px dashed grey' }}>
+      <Button>
+        
+        
+        Save
+        
+        </Button>
+    </Box>
+        <div style={{ background: "#f5f5f5", padding: "20px", position: "relative" }} sx={{ width: '80vw', margin: "10vw" }}></div>
         <div>
+        <img src={logo} alt="Logo" style={{ position: "absolute", top: "10px", right: "10px" }} />
           <label htmlFor="label-video-upload-input">Upload Video:</label>
           <input
             type="file"
@@ -37,13 +52,16 @@ function UploadVideo() {
             style={{ display: "none" }}
             onChange={handleVideoUpload}
           />
-          <button
-            onClick={() => {
-              document.getElementById("video-upload-input").click();
-            }}
-          >
-            Select Video
-          </button>
+          <Button
+          onClick={() => {
+            document.getElementById("video-upload-input").click();
+          }}
+          
+        >
+        Select Video
+
+           </Button>
+          
         </div>
  
     </DataContext.Provider>
