@@ -6,7 +6,16 @@ from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
 
 # Set the path of your input video
 
+from moviepy.editor import VideoFileClip
 
+def get_video_duration(video_path):
+    try:
+        clip = VideoFileClip(video_path)
+        duration = clip.duration
+        clip.close()
+        return duration
+    except OSError:
+        print("Error: Unable to open the video file.")
 async def start(video):
 
     # Extract the video segment
@@ -14,11 +23,15 @@ async def start(video):
 # Set the path for the output cropped video
 
 # Set the start and end times in seconds
-    start_time = 20
-    end_time = 40
-    crop_video = "./crop_video.mp4"
-# Crop the crop_video
-    ffmpeg_extract_subclip(video, start_time, end_time, targetname=crop_video)
+    duration = get_video_duration(video)
+    if(duration>=40):
+        start_time = 20
+        end_time = 40
+        crop_video = "./crop_video.mp4"
+    # Crop the crop_video
+        ffmpeg_extract_subclip(video, start_time, end_time, targetname=crop_video)
+    else:
+        crop_video = video
     frames_names = get_frames(crop_video)  # get all the images
     result = []  # create an array to store the dictionaries
     i = 0

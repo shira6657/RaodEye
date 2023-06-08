@@ -18,15 +18,7 @@ async def send_video(request:Request):
      with open("video_car.mp4", "wb") as video_file:
           video_file.write(video_data)
      a = await start("video_car.mp4")
-#     response_body = json.dumps(a)
-#     print("BLALALAL",response_body)
-#     return response_body
-     # print(a)
-     # return a
      return Imut(a)
-    # print(a)
-    # return a 
-    # return {} #return none
 
 
 
