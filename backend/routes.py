@@ -4,6 +4,7 @@ from typing import List
 from fastapi import UploadFile, File
 from models import Task, TaskUpdate
 import base64
+from collectInfoCars import start
 router = APIRouter()
 
 
