@@ -1,9 +1,6 @@
 import cv2
 import numpy as np
 import os
-from number_recognition import NumberRecognizer
-from pytesseract import pytesseract
-import os
 
 def get_frames(video):
     # Playing video from file:

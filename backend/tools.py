@@ -35,14 +35,14 @@ def align(colorCode):
 def Imut(listOfCars):
     newListOfCars = []
     for car in listOfCars:
-        carColor = send_number_to_server(car["ID"])
+        carColor = send_number_to_server(car["plate"])
         if carColor == []:
-            newListOfCars.append({"ID": car["ID"], "COLOR": car["COLOR"], "notes": "not found"})
+            newListOfCars.append({"plate": car["plate"], "color": car["color"], "notes": "not found"})
         else:
-            if not carColor == 0 or isEqual(car["COLOR"], carColor):
-                newListOfCars.append({"ID": car["ID"], "COLOR": car["COLOR"], "notes": ""})
+            if not carColor == 0 or isEqual(car["color"], carColor):
+                newListOfCars.append({"plate": car["plate"], "color": car["color"], "notes": ""})
             else:
-                newListOfCars.append({"ID": car["ID"], "COLOR": car["COLOR"], "notes": "not similar"})
+                newListOfCars.append({"plate": car["plate"], "color": car["color"], "notes": "not similar"})
     return newListOfCars
 
 

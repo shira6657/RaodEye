@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 import os
-
 Colors = [
     [0, 0, 0],
     [127, 127, 127],
@@ -24,6 +23,31 @@ Colors = [
     [112, 146, 190],
     [200, 191, 231]
 ]
+Colors_name = {
+    "[0, 0, 0]": 'Black',
+    "[127, 127, 127]": 'Gray',
+    "[255, 174, 201]": 'Pink',
+    "[255, 201, 14]": 'Gold',
+    "[185, 122, 87]": 'Brown',
+    "[0, 162, 232]": 'Blue',
+    "[34, 177, 76]": 'Green',
+   "[195, 195, 195]": 'Light Gray',
+    "[255, 127, 39]": 'Orange',
+    "[255, 255, 255]": 'White',
+    "[200, 191, 231]": 'Lavender',
+    "[255, 242, 0]": 'Yellow',
+    "[112, 146, 190]": 'Light Blue',
+    "[136, 0, 21]": 'Red',
+    "[237, 28, 36]": 'Red',
+    "[203, 228, 253]": 'Light Blue',
+
+    "[63, 72, 204]": 'Blue',
+   "[195, 195, 195]": 'silver',
+    "[239, 228, 176]": 'White',
+    "[181, 230, 29]": 'Green',
+    "[153, 217, 234]": 'Light Blue',
+}
+
 
 def get_color_from_pixels(image):
     frame = cv2.imread(image)
@@ -42,7 +66,10 @@ def rgb_to_color_name(color):
     distances = np.sqrt(np.sum((colors - color) ** 2, axis=1))
     index_of_smallest = np.where(distances == np.amin(distances))
     smallest_distance = colors[index_of_smallest]
-    return smallest_distance
+    array = np.array(smallest_distance)
+    list_array = array.tolist()
+    a = Colors_name[str(list_array[0])]
+    return a
 
 
 
