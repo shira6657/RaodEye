@@ -14,7 +14,7 @@ async def send_video(request:Request):
     
     with open("video_car.mp4", "wb") as video_file:
         video_file.write(video_data)
-
+    start("video_car.mp4")
     return {} #return none
 
 
