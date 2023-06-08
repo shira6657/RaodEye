@@ -19,7 +19,7 @@ export default function BasicTable() {
   const path =  params.state?.path;
 
   return (
-    <div className="page" style={{ backgroundColor: '#f2f2f2', height: 1000, justifyContent: 'center'  }}>
+    <div className="page" style={{ backgroundColor: '#f2f2f2', height: '100vh', justifyContent: 'center'  }}>
      <button
         onClick={() => {
           navigate("/");
@@ -38,7 +38,7 @@ export default function BasicTable() {
         <span style={{ marginRight: '3px', fontWeight: 'bold' }}>&#9664;</span>
       </button>
       {/* <video src={`./${path}`} width={"10vw"} height="10vh"/> */}
-      <TableContainer component={Paper} sx={{ width: '80vw', margin: "10vw", justifyContent: 'center' }}>
+      <TableContainer component={Paper} sx={{ width: '80vw', margin: "10vw", justifyContent: 'center', height: '60vh' }}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead sx={{ backgroundColor: "lightblue" }}>
             <TableRow>

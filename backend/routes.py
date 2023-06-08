@@ -18,7 +18,13 @@ async def send_video(request:Request):
      with open("video_car.mp4", "wb") as video_file:
           video_file.write(video_data)
      a = await start("video_car.mp4")
-     return Imut(a)
+     unique_dicts = []
+
+# Iterate through the list and add unique dictionaries to the new list
+     for d in a:
+          if d not in unique_dicts:
+               unique_dicts.append(d)
+     return Imut(unique_dicts)
 
 
 
