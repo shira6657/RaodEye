@@ -111,7 +111,7 @@ export default function BasicTable() {
                   align="center"
                   style={{ fontSize: '1.1em' }}
                 >
-                  
+                  {row.vehicle}
                 </TableCell>
                 <TableCell
                   component="th"
@@ -127,7 +127,7 @@ export default function BasicTable() {
                 align="center"
                 style={{ fontSize: '1.1em' }}
               >
-                <img src="/path/to/image.jpg" alt="Image Description" />
+                <img src={row.image}/>
               </TableCell>
               </TableRow>
             )):<div></div>}

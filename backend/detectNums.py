@@ -27,7 +27,7 @@ def detect_Num(img):
 
 
 def vehicle_type(typ):
-    vehic = {'Truck':"משאית", 'Bus':"אוטובוס", 'Motorcycle':"אופנוע", 'Pickup Truck':"טנדר", 'Sedan':"רכב", 'SUV':"רכב שטח", 'Van':"ואן",'Unknown':"לא ידוע"}
+    vehic = {'Big Truck':"משאית", 'Bus':"אוטובוס", 'Motorcycle':"אופנוע", 'Pickup Truck':"טנדר", 'Sedan':"רכב", 'SUV':"רכב שטח", 'Van':"ואן",'Unknown':"לא ידוע"}
     if not typ:
         return "לא ידוע"
     return vehic[typ]
