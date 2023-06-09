@@ -38,9 +38,9 @@ def Imut(listOfCars):
         carColor = send_number_to_server(car["plate"])
         if carColor == []:
             newListOfCars.append({"image":car["image"], "plate": car["plate"], "color": car["color"], "notes": False, "vehicle":car["vehicle"]})
-        else:
+        else:     
             if carColor == "White" and car["color"] == "Gray":
-                    car["color"]="White"
+                car["color"]="White"  
             if not carColor == 0 and isEqual(car["color"], carColor):
                 newListOfCars.append({"image":car["image"],"plate": car["plate"], "color": car["color"], "notes": True, "vehicle":car["vehicle"]})
             else:
@@ -59,7 +59,7 @@ def send_number_to_server(number):
     try:
         with urllib.request.urlopen(url) as response:
             data= response.read().decode('utf-8')
-            print(data)
+            #print(data)
             # Parse the JSON string
             parsed_data = json.loads(data)
 
