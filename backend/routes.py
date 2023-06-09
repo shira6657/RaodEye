@@ -37,20 +37,3 @@ async def send_video(request:Request):
    
      return Imut(unique_dicts)
 
-
-import http.server
-import socketserver
-
-PORT = 8000
-DIRECTORY = './cropped'  # The directory containing your static files
-
-Handler = http.server.SimpleHTTPRequestHandler
-
-# Change the current working directory to the static directory
-# This is important so that the server can find the static files
-os.chdir(DIRECTORY)
-
-# Start the server
-with socketserver.TCPServer(("", PORT), Handler) as httpd:
-    print("Serving at port", PORT)
-    httpd.serve_forever()

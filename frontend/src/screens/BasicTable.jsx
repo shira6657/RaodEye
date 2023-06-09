@@ -25,7 +25,7 @@ export default function BasicTable() {
 
   return (
     <div className="page" style={{backgroundColor: '#f2f2f2', height: '100vh'}}>
-      <div  style={{ backgroundColor: '#f2f2f2', flexDirection: 'row', display:'flex', justifyContent: 'right',height:"5vh"  }}>
+      <div  style={{ backgroundColor: '#f2f2f2', flexDirection: 'row', display:'flex', justifyContent: 'right',height:"10vh",padding:".5vw"  }}>
        <IconButton
         onClick={() => {
           navigate("/");
@@ -47,7 +47,7 @@ export default function BasicTable() {
         </div>
     
       {/* <video src={`./${path}`} width={"10vw"} height="10vh"/> */}
-      <TableContainer component={Paper} sx={{ width: '80vw', margin: "10vw", justifyContent: 'center', height: '60vh' }}>
+      <TableContainer component={Paper} sx={{ width: '90vw', margin: "5vh 5vw", justifyContent: 'center', height: '90vh' }}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead sx={{ backgroundColor: "lightblue" }}>
             <TableRow>
@@ -128,7 +128,7 @@ export default function BasicTable() {
                 align="center"
                 style={{ fontSize: '1.1em' }}
               >
-                <img src={`${SERVER_URL}${row.image}`}/>
+                <img src={`${SERVER_URL}${row.image}`} width="200px"/>
               </TableCell>
               </TableRow>
             )):<div></div>}
