@@ -19,7 +19,19 @@ def detect_Num(img):
     for result in my_object['results']:
         car = {
             'pixels': result['vehicle']['box'],
-            'plate': result['plate']
+            'plate': result['plate'],
+            'vehicle':vehicle_type(result['vehicle']['type'])
         }
         cars.append(car)
     return cars
+
+
+def vehicle_type(typ):
+    vehic = {'Truck':"משאית", 'Bus':"אוטובוס", 'Motorcycle':"אופנוע", 'Pickup Truck':"טנדר", 'Sedan':"רכב", 'SUV':"רכב שטח", 'Van':"ואן",'Unknown':"לא ידוע"}
+    if not typ:
+        return "לא ידוע"
+    return vehic[typ]
+
+
+
+#Big Truck, Bus, Motorcycle, Pickup Truck, Sedan, SUV, Van, Unknown
