@@ -9,6 +9,16 @@ from tools import Imut
 import json
 router = APIRouter()
 
+def get_unique_by_field(arr, field):
+    unique_values = set()
+    unique_arr = []
+    
+    for item in arr:
+        if item[field] not in unique_values:
+            unique_values.add(item[field])
+            unique_arr.append(item)
+    
+    return unique_arr
 
 @router.post("/getVideo")
 async def send_video(request:Request):
@@ -21,9 +31,8 @@ async def send_video(request:Request):
      unique_dicts = []
 
 # Iterate through the list and add unique dictionaries to the new list
-     for d in a:
-          if d not in unique_dicts:
-               unique_dicts.append(d)
+     unique_dicts = get_unique_by_field(a,"plate")
+   
      return Imut(unique_dicts)
 
 
