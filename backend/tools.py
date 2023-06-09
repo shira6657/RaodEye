@@ -39,11 +39,11 @@ def Imut(listOfCars):
         if carColor == []:
             newListOfCars.append({"image":car["image"], "plate": car["plate"], "color": car["color"], "notes": False, "vehicle":car["vehicle"]})
         else:
+            if carColor == "White" and car["color"] == "Gray":
+                    car["color"]="White"
             if not carColor == 0 and isEqual(car["color"], carColor):
                 newListOfCars.append({"image":car["image"],"plate": car["plate"], "color": car["color"], "notes": True, "vehicle":car["vehicle"]})
             else:
-                if carColor == "White" and car["color"]=="Gray":
-                    car["color"]=="White"
                 newListOfCars.append({"image":car["image"],"plate": car["plate"], "color": car["color"], "notes": False, "vehicle":car["vehicle"]})
     return newListOfCars
 
