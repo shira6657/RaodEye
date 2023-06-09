@@ -37,7 +37,7 @@ async def start(video):
     i = 0
     for img in frames_names:
         #img = {'name': frame_name}  # Create a dictionary with the 'name' key
-        license_nums =   detect_Num(img)  # return a list of dictionaries with the pixels and plate numbers of all the cars in the image
+        license_nums =   detect_Num(img)  # return a list of dictionaries with the pixels, plate numbers and vehicle type of all the cars in the image
         for memb in license_nums:
             pixels = memb['pixels']
             pixeled_pic = Frame_by_Pixels(pixels['xmax'], pixels['xmin'], pixels['ymax'], pixels['ymin'],i, img)  # create the pixeled images in the cropped folder
@@ -52,7 +52,9 @@ async def start(video):
                 continue
             result_dict = {
                 'plate': memb['plate'],
-                'color': color_name
+                'color': color_name,
+                'vehicle':memb['vehicle'],
+                'image': f'/cropped/{pixeled_pic}.jpg'
             }
             result.append(result_dict)  # add the dictionary to the result array
     return result
