@@ -54,7 +54,7 @@ async def start(video):
                 'plate': memb['plate'],
                 'color': color_name,
                 'vehicle':memb['vehicle'],
-                'image': f'/cropped/{pixeled_pic}.jpg'
+                'image': f'/{pixeled_pic}'
             }
             result.append(result_dict)  # add the dictionary to the result array
     return result

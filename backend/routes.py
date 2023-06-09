@@ -1,3 +1,4 @@
+from flask import send_from_directory
 from fastapi import APIRouter, Body, Request, Response, HTTPException, status,UploadFile
 from fastapi.encoders import jsonable_encoder
 from typing import List
@@ -7,6 +8,7 @@ import base64
 from collectInfoCars import start
 from tools import Imut
 import json
+import os
 router = APIRouter()
 
 def get_unique_by_field(arr, field):
@@ -36,5 +38,19 @@ async def send_video(request:Request):
      return Imut(unique_dicts)
 
 
+import http.server
+import socketserver
 
+PORT = 8000
+DIRECTORY = './cropped'  # The directory containing your static files
 
+Handler = http.server.SimpleHTTPRequestHandler
+
+# Change the current working directory to the static directory
+# This is important so that the server can find the static files
+os.chdir(DIRECTORY)
+
+# Start the server
+with socketserver.TCPServer(("", PORT), Handler) as httpd:
+    print("Serving at port", PORT)
+    httpd.serve_forever()

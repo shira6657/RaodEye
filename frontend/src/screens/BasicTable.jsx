@@ -12,6 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+const SERVER_URL = "http://localhost:8000";
 
 
 
@@ -127,7 +128,7 @@ export default function BasicTable() {
                 align="center"
                 style={{ fontSize: '1.1em' }}
               >
-                <img src={row.image}/>
+                <img src={`${SERVER_URL}${row.image}`}/>
               </TableCell>
               </TableRow>
             )):<div></div>}
