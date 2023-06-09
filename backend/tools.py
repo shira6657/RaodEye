@@ -37,12 +37,14 @@ def Imut(listOfCars):
     for car in listOfCars:
         carColor = send_number_to_server(car["plate"])
         if carColor == []:
-            newListOfCars.append({"plate": car["plate"], "color": car["color"], "notes": False})
+            newListOfCars.append({"image":car["image"], "plate": car["plate"], "color": car["color"], "notes": False, "vehicle":car["vehicle"]})
         else:
             if not carColor == 0 and isEqual(car["color"], carColor):
-                newListOfCars.append({"plate": car["plate"], "color": car["color"], "notes": True})
+                newListOfCars.append({"image":car["image"],"plate": car["plate"], "color": car["color"], "notes": True, "vehicle":car["vehicle"]})
             else:
-                newListOfCars.append({"plate": car["plate"], "color": car["color"], "notes": "not similar"})
+                if carColor == "White" and car["color"]=="Gray":
+                    car["color"]=="White"
+                newListOfCars.append({"image":car["image"],"plate": car["plate"], "color": car["color"], "notes": False, "vehicle":car["vehicle"]})
     return newListOfCars
 
 
@@ -51,12 +53,13 @@ def isEqual(movieColor, rlbdColor):
 
 
 def send_number_to_server(number):
+    print(number)
     url = "https://data.gov.il/api/3/action/datastore_search?resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3&" + "q={}".format(
         number)
     try:
         with urllib.request.urlopen(url) as response:
             data= response.read().decode('utf-8')
-
+            print(data)
             # Parse the JSON string
             parsed_data = json.loads(data)
 
@@ -74,6 +77,7 @@ def send_number_to_server(number):
                 print('No records found.')
 
     except urllib.error.URLError as e:
+        print(e)
         return []
 
 
