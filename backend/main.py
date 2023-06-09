@@ -5,7 +5,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from pymongo import MongoClient
 from dotenv import dotenv_values
 from routes import router as video_router
+import ssl
 
+ssl._create_default_https_context = ssl._create_unverified_context
 dotenv_values(".env")
 
 app = FastAPI()

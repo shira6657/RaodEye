@@ -72,6 +72,7 @@ export default function BasicTable() {
                   align="center"
                   style={{ fontSize: '1.1em' }}
                 >
+                  
                   {row.notes}
                 </TableCell>
                 <TableCell
