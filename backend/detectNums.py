@@ -15,6 +15,7 @@ def detect_Num(img):
             return []
         
     my_object =  response.json()
+    pprint(my_object)
     cars = []
     for result in my_object['results']:
         car = {
@@ -27,11 +28,11 @@ def detect_Num(img):
 
 
 def vehicle_type(typ):
-    vehic = {'Truck':"משאית", 'Bus':"אוטובוס", 'Motorcycle':"אופנוע", 'Pickup Truck':"טנדר", 'Sedan':"רכב", 'SUV':"רכב שטח", 'Van':"ואן",'Unknown':"לא ידוע"}
+    vehic = {'Big Truck':"משאית", 'Bus':"אוטובוס", 'Motorcycle':"אופנוע", 'Pickup Truck':"טנדר", 'Sedan':"רכב", 'SUV':"רכב שטח", 'Van':"ואן",'Unknown':"לא ידוע"}
     if not typ:
         return "לא ידוע"
     return vehic[typ]
 
 
 
-#Big Truck, Bus, Motorcycle, Pickup Truck, Sedan, SUV, Van, Unknown
+#c Truck, Bus, Motorcycle, Pickup Truck, Sedan, SUV, Van, Unknown
