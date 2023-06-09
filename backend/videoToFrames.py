@@ -28,7 +28,6 @@ def get_frames(video):
             # Saves image of the current frame in jpg file
             name = './data/frame' + str(current_frame) + '.jpg'
             images_names.append(name)
-            print('Creating...' + name)
             cv2.imwrite(name, frame)
 
             # Increment the frame index by the interval

@@ -39,7 +39,7 @@ def Imut(listOfCars):
         if carColor == []:
             newListOfCars.append({"image":car["image"], "plate": car["plate"], "color": car["color"], "notes": False, "vehicle":car["vehicle"]})
         else:     
-            if carColor == "White" and car["color"] == "Gray":
+            if align(carColor) == "White" and car["color"] == "Gray":
                 car["color"]="White"  
             if not carColor == 0 and isEqual(car["color"], carColor):
                 newListOfCars.append({"image":car["image"],"plate": car["plate"], "color": car["color"], "notes": True, "vehicle":car["vehicle"]})
@@ -53,7 +53,6 @@ def isEqual(movieColor, rlbdColor):
 
 
 def send_number_to_server(number):
-    print(number)
     url = "https://data.gov.il/api/3/action/datastore_search?resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3&" + "q={}".format(
         number)
     try:
@@ -68,8 +67,7 @@ def send_number_to_server(number):
             records = result['records']
 
             # Print the records
-            for record in records:
-                print(record)
+        
 
             if records:
                 return parsed_data['result']['records'][0]['tzeva_cd']
