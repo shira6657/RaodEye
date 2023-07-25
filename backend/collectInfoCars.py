@@ -18,9 +18,6 @@ def get_video_duration(video_path):
         print("Error: Unable to open the video file.")
 async def start(video):
 
-    # Extract the video segment
-
-# Set the path for the output cropped video
 
 # Set the start and end times in seconds
     duration = get_video_duration(video)
@@ -59,6 +56,3 @@ async def start(video):
             result.append(result_dict)  # add the dictionary to the result array
     return result
 
-# coro = start('ss.mp4')
-# asyncio.run(coro)
-# start('ss.mp4')

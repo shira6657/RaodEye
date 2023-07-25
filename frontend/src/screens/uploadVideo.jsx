@@ -11,7 +11,6 @@ import text from "../assets/text.png";
 
 import CircularProgress from '@mui/material/CircularProgress';
 
-//import VideoUploader from "./components/VideoUploader";
 
 export const DataContext = React.createContext({});
 
@@ -34,7 +33,6 @@ function UploadVideo() {
         if (video_data!="err")navigate('table', { state: { arr: video_data, } });
       }
 
-      // Do something with the video file
     };
   }
 
@@ -162,9 +160,5 @@ function UploadVideo() {
     </>
   );
 };
-
-//export default StudentTable;
-
-
 
 export default UploadVideo;

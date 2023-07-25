@@ -1,115 +1,61 @@
-# Demo web server using React and FastAPI
+# RoadEye
 
 ## Prerequisites
 
 - Python 3.8+ and pip
 - NodeJS 18+ and npm
-- MongoDB server
 
-## Getting started:
+## Getting Started
 
-### Install Python and Javascript libraries:
+### Install Python and JavaScript libraries:
 
-```
+```bash
 cd ./backend
 pip3 install -r requirements.txt
 cd ../frontend
 npm install
 ```
 
-היי בנות!!!!
-### Edit `.env` file with Database connection details:
-
-```
-cp ./backend/.env.example ./backend/.env
-```
-
-Enter the values:
-
-```
-MONGO_IP=localhost
-MONGO_USER=*****
-MONGO_PASSWORD=*****
-```
-
 ### Run the API server:
 
-```
+```bash
 cd ./backend
-uvicorn main:app
+python -m uvicorn main:app --reload
 ```
 
-### Run the Frontend react dev server:
+### Run the Frontend React development server:
 
-```
+```bash
 cd ./frontend
 npm start
 ```
 
-## Debugging
+## About the Code
 
-### For VSCODE backend debugging:
+The algorithm is as follows:
+- Cut the video from the 20th to the 40th second (assuming the offense is in the middle of the video).
+- Split the video into frames.
+- For each frame:
+    * Recognize the license number using the platerecognizer API.
+    * Recognize the vehicle type using the platerecognizer API.
+    * Crop the frame to get only the vehicle from the whole image using the bounding box (returned from the API request).
+    * Recognize the color by analyzing the image's pixels.
+- Validate the data using the Israeli government API.
 
-```
-       {
-            "name": "Python: FastAPI",
-            "type": "python",
-            "request": "launch",
-            "module": "uvicorn",
-            "cwd": "${workspaceFolder}/backend",
-            "envFile": "${workspaceFolder}/backend/.env",
-            "args": [
-                "main:app"
-            ],
-            "jinja": true,
-            "justMyCode": true
-        }
-```
+## About the Plate Recognizer API
 
-## Deploy
+This API offers a free trial, but it is limited.
 
-To deploy the application, follow these steps:
+We are currently using the free trial, which is limited to up to 2,500 requests per user.
 
-```bash
-curl -fsSL get.docker.com | bash
-curl -SL https://github.com/docker/compose/releases/download/v2.18.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
-```
+If you decide to upgrade to the paid trial, you will be able to retrieve the color of the vehicle with more accuracy than our current algorithm.
 
-Create a copy of the .env.example file and name it .env. Open the .env file and modify the values to match your configuration.
+Please note: If you run the code and encounter issues, we recommend checking the error returned from the API request. If you receive error code 403, it means that your trial has ended, and you need to upgrade to the paid trial (or create a new user).
 
-Build all Docker containers by running the command:
+You can read more here: [Plate Recognizer API Documentation](https://docs.platerecognizer.com/#introduction)
 
-```bash
-docker-compose build
-# If you need to debug, you can run
-docker-compose build --progress plain --no-cache backend
-# to upload image to docker.hub.io
-docker login
-# lets upload
-docker-compose push
-```
+And here: [Plate Recognizer Website](https://platerecognizer.com/)
 
-Start all Docker containers with the following command:
+--------------------------
 
-```bash
-docker-compose up
-# Alternatively, for better output:
-docker-compose up -d && docker-compose ps && docker-compose logs -f
-```
-
-To view a list of all volumes on your Docker daemon, use the command:
-
-```bash
-docker volume ls
-# If needed, you can remove a specific volume by running:
-docker volume rm <VOLUME_NAME>
-```
-
-If you require a self-signed certificate, generate it using the following commands:
-
-```bash
-openssl genpkey -algorithm RSA -out private.key -pkeyopt rsa_keygen_bits:2048
-openssl req -new -x509 -key private.key -out certificate.crt -days 365
-```
-
-That's it! Your application should now be deployed and running using Docker.
+**_For any questions, we are available via this email: shira6657@gmail.com_**

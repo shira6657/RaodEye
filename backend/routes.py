@@ -3,7 +3,6 @@ from fastapi import APIRouter, Body, Request, Response, HTTPException, status,Up
 from fastapi.encoders import jsonable_encoder
 from typing import List
 from fastapi import UploadFile, File
-from models import Task, TaskUpdate
 import base64
 from collectInfoCars import start
 from tools import Imut

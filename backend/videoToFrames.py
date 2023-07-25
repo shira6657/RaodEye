@@ -41,27 +41,3 @@ def get_frames(video):
     return images_names
 
 
-
-
-# Do func "numi" to every frame in the "data" file
-
-
-
-# # Function to process each frame
-# def numi(frame_path):
-#     # Your implementation of the "numi" function goes here
-#     # You can access the frame using the `frame_path` parameter
-
-# # Full path to the "data" directory
-# data_dir = 'C:/Users/danie/Desktop/split-videos-to-frames-master/split-videos-to-frames-master/data'
-
-# # Iterate through all files in the "data" directory
-# for filename in os.listdir(data_dir):
-#     # Check if the file is a JPG image
-#     if filename.endswith('.jpg'):
-#         # Construct the full path to the frame
-#         frame_path = os.path.join(data_dir, filename)
-        
-#         # Call the "numi" function for the frame
-#         numi(frame_path)
-
