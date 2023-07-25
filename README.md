@@ -56,6 +56,4 @@ You can read more here: [Plate Recognizer API Documentation](https://docs.plater
 
 And here: [Plate Recognizer Website](https://platerecognizer.com/)
 
---------------------------
 
-**_For any questions, we are available via this email: shira6657@gmail.com_**
