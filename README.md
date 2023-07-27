@@ -42,7 +42,7 @@ The algorithm is as follows:
     * Recognize the color by analyzing the image's pixels.
 - Validate the data using the Israeli government API.
 
-## About the Plate Recognizer API
+## About the Plate Recognizer API 
 
 This API offers a free trial, but it is limited.
 
